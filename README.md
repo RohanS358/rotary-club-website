@@ -1,4 +1,4 @@
-<img src="./logo.svg" width="72" alt="logo" />
+<img src="./public/wheel.png" width="72" alt="Rotary International emblem" />
 
 # Rotary Club Website
 
