@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { storageKey } from "@/lib/utils";
 import Image from "@/components/ui/SmartImage";
 import { Plus, Edit, Trash2, FolderOpen, Loader2, Upload, Link2, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
@@ -122,7 +123,7 @@ export default function AdminProjectsPage() {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const path = `projects/${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
+    const path = storageKey(file.name, "projects/");
     const { data, error } = await supabase.storage.from("project-images").upload(path, file);
     if (error) { toast.error("Upload failed: " + error.message); setUploading(false); return; }
     const { data: { publicUrl } } = supabase.storage.from("project-images").getPublicUrl(data.path);

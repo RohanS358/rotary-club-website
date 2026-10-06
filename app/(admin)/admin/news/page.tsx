@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { storageKey } from "@/lib/utils";
 import Image from "@/components/ui/SmartImage";
 import { Plus, Edit, Trash2, Newspaper, Loader2, Upload } from "lucide-react";
 import { toast } from "sonner";
@@ -55,7 +56,7 @@ export default function AdminNewsPage() {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const path = `news/${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
+    const path = storageKey(file.name, "news/");
     const { data, error } = await supabase.storage.from("news-images").upload(path, file);
     if (error) { toast.error("Upload failed: " + error.message); setUploading(false); return; }
     const { data: { publicUrl } } = supabase.storage.from("news-images").getPublicUrl(data.path);

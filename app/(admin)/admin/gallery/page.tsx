@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { storageKey } from "@/lib/utils";
 import Image from "@/components/ui/SmartImage";
 import { Plus, Trash2, Loader2, Image as ImageIcon, Upload } from "lucide-react";
 import { toast } from "sonner";
@@ -58,7 +59,7 @@ export default function AdminGalleryPage() {
     if (!file) return;
     setUploading(true);
     try {
-      const fileName = `${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
+      const fileName = storageKey(file.name);
       const { error } = await supabase.storage.from("gallery-images").upload(fileName, file);
       if (error) throw error;
       const { data: { publicUrl } } = supabase.storage.from("gallery-images").getPublicUrl(fileName);

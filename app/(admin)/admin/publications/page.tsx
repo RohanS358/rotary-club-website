@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { storageKey } from "@/lib/utils";
 import { Plus, Edit, Trash2, BookOpen, Loader2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { createClient } from "@/lib/supabase/client";
@@ -73,7 +74,7 @@ export default function AdminPublicationsPage() {
     if (!file) return;
     if (!file.name.endsWith(".pdf")) { toast.error("Only PDF files are allowed"); return; }
     setUploading(true);
-    const path = `${Date.now()}-${file.name}`;
+    const path = storageKey(file.name);
     const { data, error } = await supabase.storage.from("publications").upload(path, file);
     if (error) { toast.error("Upload failed: " + error.message); setUploading(false); return; }
     const { data: { publicUrl } } = supabase.storage.from("publications").getPublicUrl(data.path);
