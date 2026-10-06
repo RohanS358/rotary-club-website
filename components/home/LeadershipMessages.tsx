@@ -27,6 +27,7 @@ const MESSAGES: Message[] = [
     role: "President, Rotary International",
     org: "Rotary International",
     year: "2026–27",
+    photo: "/messages/ri-president.jpg",
     salutation: "Dear friends,",
     paragraphs: [
       "Rotary has changed my life, and I’m willing to bet that it has changed yours too. It expands our world, enriches our understanding of service, creates international friendships, and grounds us. It teaches us to see, to look beyond ourselves.",
@@ -43,6 +44,7 @@ const MESSAGES: Message[] = [
     role: "District Governor, District 3292",
     org: "Rotary International District 3292",
     year: "2026–27",
+    photo: "/messages/district-governor.jpg",
     salutation: "Dear President Tej,",
     paragraphs: [
       "We would like to extend our warmest and heartfelt best wishes as you will take on the role of the Club President of your Club. Huge congratulations on this significant leadership commitment that you have accepted stepping to lead your Club to even greater heights during the Rotary Year 2026/27.",
@@ -59,6 +61,7 @@ const MESSAGES: Message[] = [
     role: "Assistant Governor",
     org: "Rotary International District 3292",
     year: "2026–27",
+    photo: "/messages/assistant-governor.jpg",
     nepali: true,
     salutation: "अध्यक्ष ज्यू",
     paragraphs: [
@@ -73,8 +76,7 @@ const MESSAGES: Message[] = [
     role: "President",
     org: "Rotary Club of Pashupati Kathmandu",
     year: "2026–27",
-    photo:
-      "https://pashupati-kathmandu.rotarydistrict3292.org.np/frontend/img/profiles/1780498545-932868.jpg",
+    photo: "/messages/club-president.jpg",
     title: "Continuing the Legacy of Service: Advancing the Rotary Spirit of Humanity",
     salutation: "Dear Fellow Rotarians,",
     paragraphs: [
@@ -110,7 +112,7 @@ function Portrait({ m, size }: { m: Message; size: number }) {
       style={{ width: size, height: size }}
     >
       {m.photo ? (
-        <Image src={m.photo} alt={m.name} fill sizes={`${size}px`} className="object-cover" />
+        <Image src={m.photo} alt={m.name} fill sizes={`${size}px`} className="object-cover object-top" />
       ) : (
         <div
           className="w-full h-full flex items-center justify-center font-bold text-white"

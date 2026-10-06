@@ -7,6 +7,7 @@ export const CLUB_INFO = {
   email: 'pashupatirotaryclub@gmail.com',
   phone: '+977 9851197327',
   hours: 'Sun - Fri  9:00 - 18:00',
+  meeting: 'Wednesday 5:30 PM, Hotel Airport, Airport Gate',
   district: '3292',
   motto: 'Service Above Self',
   founded: '1998',

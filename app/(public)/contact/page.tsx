@@ -34,6 +34,12 @@ const CONTACT_DETAILS = [
     value: CLUB_INFO.hours,
     href: null,
   },
+  {
+    icon: Clock,
+    label: "Weekly Meeting",
+    value: CLUB_INFO.meeting,
+    href: null,
+  },
 ];
 
 export default function ContactPage() {

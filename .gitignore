@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# scraper output (local only: contains member emails, 15MB of unused photos)
+/scraped/
+/public/scraped/
